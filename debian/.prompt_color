@@ -1,0 +1,10 @@
+#
+# This value is used to set the color of the prompt
+# 
+# 1 --> Blue based colors (for servers)
+# 2 --> Yellow based colors (for desktop)
+# 3 --> Green based colors (for embeded)
+#
+
+PROMPT_COLOR=2
+

@@ -1,0 +1,15 @@
+#
+# Insert here all commands executed by the welcome function
+# This is usualy show when opening a terminal or when callin 'reload'
+#
+
+clear
+#ASCII art with figlet
+figlet -c "Welcome, " $USER
+
+echo -e ""
+echo -ne "Today is "; date
+#c is a custom aliase. See in ~/.bashrc
+echo -e ""; c
+echo -ne "Up time:";uptime | awk /'up/'
+echo ""
