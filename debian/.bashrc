@@ -137,7 +137,7 @@ if ! shopt -oq posix; then
 fi
 
 #Clean path
-export PATH=/opt/crosstool-ng-1.20.0/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games
+export PATH=/opt/crosstool-ng-1.21.0/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games
 
 #################################
 #  CUSTOM
@@ -199,7 +199,7 @@ alias reload='source ~/.bashrc'
 #Dir shortcuts
 alias home='cd ~/'
 alias documents='cd ~/Documents'
-alias downloads='cd ~/Téléchargements'
+alias downloads='cd ~/TÃ©lÃ©chargements'
 alias images='cd ~/Images'
 alias code='cd ~/code'
 alias ..='cd ..'
