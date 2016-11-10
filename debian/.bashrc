@@ -174,6 +174,19 @@ extract () {
   fi
 }
 
+# Create a .vmdk file (disk drive format for VirtualBox), linked to
+# the physical disk specified in second parameter
+
+vdisk()
+{
+	if [ $# == 2 ]
+	then
+		VBoxManage internalcommands createrawvmdk -filename "$1.vmdk" -rawdisk /dev/$2
+	else
+		echo "Usage: vdisk <filename> <disk_id>"
+	fi
+}
+
 #Defined here because it can be used in welcome() function
 #Month calendar with current day in red
 alias c='var=$(cal); echo "${var/$(date +%-d)/$(echo -e "\033[1;31m$(date +%-d)\033[0m")}"'
