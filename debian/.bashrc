@@ -175,7 +175,7 @@ extract () {
 }
 
 # Create a .vmdk file (disk drive format for VirtualBox), linked to
-# the physical disk specified in second parameter
+# the physical disk specified in second parameter. Need root (to be in /var/root/.bashrc too)
 
 vdisk()
 {
