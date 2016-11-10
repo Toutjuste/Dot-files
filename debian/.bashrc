@@ -182,6 +182,7 @@ vdisk()
 	if [ $# == 2 ]
 	then
 		VBoxManage internalcommands createrawvmdk -filename "$1.vmdk" -rawdisk /dev/$2
+		echo "Please check unmounting the disk $2."
 	else
 		echo "Usage: vdisk <filename> <disk_id>"
 	fi
