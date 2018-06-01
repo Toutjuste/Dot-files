@@ -202,6 +202,21 @@ alert_end_pid()
     fi
 }
 
+# Bash on Mac OS X isn't very coloured. White is the only color.
+# Let's remediate to it with ccat.
+
+ccat()
+{
+  fileType="$(file "$1" | grep -o 'text')"
+  if [[ "$fileType" = *'text'* ]]; then
+    echo -en "\033[37m"
+  else
+      echo -en "\033[31m"
+  fi
+  cat $1
+  echo -en "\033[0m"
+}
+
 #Defined here because it can be used in welcome() function
 #Month calendar with current day in red
 alias c='var=$(cal); echo "${var/$(date +%-d)/$(echo -e "\033[1;31m$(date +%-d)\033[0m")}"'
