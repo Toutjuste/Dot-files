@@ -188,6 +188,20 @@ vdisk()
 	fi
 }
 
+# Function to be alerted when loooong process is running.
+# Pass it the PID and the quoted-text as arguments.
+
+alert_end_pid()
+{
+    if [ $# == 2 ]
+    then
+        (while kill -0 "$1" 2> "/dev/null"; do sleep 1; done) && say "$2" &
+    else
+        echo "Usage: alert_end_pid <PID> <message>"
+        echo "(please check your sound volume)"
+    fi
+}
+
 #Defined here because it can be used in welcome() function
 #Month calendar with current day in red
 alias c='var=$(cal); echo "${var/$(date +%-d)/$(echo -e "\033[1;31m$(date +%-d)\033[0m")}"'
