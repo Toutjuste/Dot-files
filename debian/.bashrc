@@ -173,6 +173,49 @@ extract () {
   fi
 }
 
+# Create a .vmdk file (disk drive format for VirtualBox), linked to
+# the physical disk specified in second parameter. Need root (to be in /var/root/.bashrc too)
+
+vdisk()
+{
+	if [ $# == 2 ]
+	then
+		VBoxManage internalcommands createrawvmdk -filename "$1.vmdk" -rawdisk /dev/$2
+		echo "Please check unmounting the disk $2."
+	else
+		echo "Usage: vdisk <filename> <disk_id>"
+	fi
+}
+
+# Function to be alerted when loooong process is running.
+# Pass it the PID and the quoted-text as arguments.
+
+alert_end_pid()
+{
+    if [ $# == 2 ]
+    then
+        (while kill -0 "$1" 2> "/dev/null"; do sleep 1; done) && say "$2" &
+    else
+        echo "Usage: alert_end_pid <PID> <message>"
+        echo "(please check your sound volume)"
+    fi
+}
+
+# Bash on Mac OS X isn't very coloured. White is the only color.
+# Let's remediate to it with ccat.
+
+ccat()
+{
+  fileType="$(file "$1" | grep -o 'text')"
+  if [[ "$fileType" = *'text'* ]]; then
+    echo -en "\033[37m"
+  else
+      echo -en "\033[31m"
+  fi
+  cat $1
+  echo -en "\033[0m"
+}
+
 #Defined here because it can be used in welcome() function
 #Month calendar with current day in red
 alias c='var=$(cal); echo "${var/$(date +%-d)/$(echo -e "\033[1;31m$(date +%-d)\033[0m")}"'
